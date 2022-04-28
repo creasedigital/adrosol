@@ -11,9 +11,11 @@ const Header = () => {
 			p={4}
 		>
 			<Flex>
-				<Image src={Logo} alt="adrosol logo" h="80px" />
+				<Image src={Logo} alt="adrosol logo" h="60px" />
 			</Flex>
-			<Box as="p">Find The Best Users!</Box>
+			<Box as="p" fontWeight="bold" pr={4}>
+				About
+			</Box>
 		</Flex>
 	);
 };
