@@ -1,7 +1,8 @@
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Spinner } from "@chakra-ui/react";
 import Header from "../components/Header";
 import Search from "../components/Search";
 import TableContent from "../components/TableContent";
+import Layout from "../layout/Layout";
 
 const Home = (props) => {
 	if (props.error) {
@@ -11,19 +12,27 @@ const Home = (props) => {
 	} else {
 		return (
 			<Box>
-				<Box mb={5}>
-					<Header />
-				</Box>
-				<Box mb={5}>
-					<Search handleSearch={props.handleSearch} />
-				</Box>
-				{props.hasUsers ? (
-					<Box as="p">Please Use The Search Above or Get Users</Box>
-				) : (
+				<Layout>
 					<Box>
-						<TableContent />
+						<Search
+							handleSearch={props.handleSearch}
+							changeSearch={props.changeSearch}
+							data={props.data}
+							query={props.query}
+						/>
 					</Box>
-				)}
+					{/*
+					{props.hasUsers ? (
+
+            <Flex justify="center" mt={4} as="p">
+							Please Use The Search Above or Get Users
+              </Flex>
+              ) : (
+          */}
+					<Box>
+						<TableContent users={props.users} />
+					</Box>
+				</Layout>
 			</Box>
 		);
 	}

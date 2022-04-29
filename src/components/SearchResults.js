@@ -1,14 +1,18 @@
 import { Tr, Td } from "@chakra-ui/react";
 
-const SearchResults = () => {
+const SearchResults = (props) => {
 	return (
 		<>
-			<Tr>
-				<Td>asfsfffdg</Td>
-			</Tr>
-			<Tr>
-				<Td>asfsfffdg</Td>
-			</Tr>
+			{props.users.map((user) => (
+				<Tr>
+					<Td>{user.name}</Td>
+					<Td>{user.username}</Td>
+					<Td>{user.email}</Td>
+					<Td>{user.phone}</Td>
+					<Td>{user.website}</Td>
+					<Td>{user.company.name}</Td>
+				</Tr>
+			))}
 		</>
 	);
 };

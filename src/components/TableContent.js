@@ -2,14 +2,14 @@ import { Tbody, Box, Table, TableContainer, Flex } from "@chakra-ui/react";
 import SearchResults from "./SearchResults";
 import TableData from "./TableData";
 
-const TableContent = () => {
+const TableContent = (props) => {
 	return (
-		<Flex justify="center" w="100%">
-			<TableContainer maxWidth="80%" overflowX="auto">
-				<Table variant="unstyled" colorScheme="main.400">
-					<TableData />
+		<Flex justify="center" w="100%" p="4" bgColor="main.100">
+			<TableContainer maxWidth="80%" overflowX="auto" mt={10} bgColor="white">
+				<Table variant="striped" boxShadow="lg" rounded="md">
+					<TableData users={props.users} />
 					<Tbody>
-						<SearchResults />
+						<SearchResults users={props.users} />
 					</Tbody>
 				</Table>
 			</TableContainer>

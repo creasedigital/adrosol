@@ -1,4 +1,5 @@
 import { Flex, Box, Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/adrosol@2x.png";
 
 const Header = () => {
@@ -11,11 +12,15 @@ const Header = () => {
 			p={4}
 		>
 			<Flex>
-				<Image src={Logo} alt="adrosol logo" h="60px" />
+				<Link to="/">
+					<Image src={Logo} alt="adrosol logo" h="60px" />
+				</Link>
 			</Flex>
-			<Box as="p" fontWeight="bold" pr={4}>
-				About
-			</Box>
+			<Link to="/about">
+				<Box as="p" fontWeight="bold" pr={4}>
+					About
+				</Box>
+			</Link>
 		</Flex>
 	);
 };
