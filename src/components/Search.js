@@ -1,7 +1,6 @@
-import { Box, Flex, IconButton, Input } from "@chakra-ui/react";
+import { Flex, IconButton, Input } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import CustomButton from "./CustomButton";
 import { useState } from "react";
 
 const Search = (props) => {
@@ -11,7 +10,7 @@ const Search = (props) => {
 		<Flex align="center" justify="center">
 			<Flex align="center">
 				<Input
-					placeholder="search by username"
+					placeholder="search by name or username"
 					width={{ base: "200px", sm: "300px", md: "450px" }}
 					mr={4}
 					value={searchData}

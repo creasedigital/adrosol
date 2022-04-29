@@ -1,4 +1,4 @@
-import { Tr, Td, Box } from "@chakra-ui/react";
+import { Tr, Td } from "@chakra-ui/react";
 
 const SearchResults = (props) => {
 	return (

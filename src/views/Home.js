@@ -1,9 +1,7 @@
 import { Box, Flex, Spinner } from "@chakra-ui/react";
-import Header from "../components/Header";
 import Search from "../components/Search";
 import TableContent from "../components/TableContent";
 import Layout from "../layout/Layout";
-// import { Link } from "react-router-dom";
 
 const Home = (props) => {
 	if (props.error) {
@@ -27,7 +25,15 @@ const Home = (props) => {
 					<Box>
 						<Search handleSearch={props.handleSearch} />
 					</Box>
-					<Flex align="center" justify="center">
+					<Flex
+						align="center"
+						justify="center"
+						p={10}
+						bgColor="main.100"
+						boxShadow="md"
+						color="main.900"
+						borderRadius="10px"
+					>
 						<Spinner color="#2D2B52" size="lg" />
 					</Flex>
 				</Layout>

@@ -9,7 +9,6 @@ function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [isSearching, setIsSearching] = useState(false);
 	// const [query, setQuery] = useState("");
 	// const [searchParam] = useState("users");
 
