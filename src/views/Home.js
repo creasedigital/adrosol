@@ -10,8 +10,8 @@ const Home = (props) => {
 		return (
 			<Layout>
 				<Box bgColor="red.200" color="red.900" textAlign="center" p={4}>
-					The requested user was not found, please enter a valid username or{" "}
-					<br /> Return to{" "}
+					The requested user was not found, please enter a valid username or
+					name <br /> Return to{" "}
 					<a href="/">
 						<Box color="main.900" fontWeight="bold">
 							Home
@@ -25,13 +25,11 @@ const Home = (props) => {
 			<Box>
 				<Layout>
 					<Box>
-						<Search
-							handleSearch={props.handleSearch}
-							changeSearch={props.changeSearch}
-							data={props.data}
-							query={props.query}
-						/>
+						<Search handleSearch={props.handleSearch} />
 					</Box>
+					<Flex align="center" justify="center">
+						<Spinner color="#2D2B52" size="lg" />
+					</Flex>
 				</Layout>
 			</Box>
 		);
@@ -40,12 +38,7 @@ const Home = (props) => {
 			<Box>
 				<Layout>
 					<Box>
-						<Search
-							handleSearch={props.handleSearch}
-							changeSearch={props.changeSearch}
-							data={props.data}
-							query={props.query}
-						/>
+						<Search handleSearch={props.handleSearch} />
 					</Box>
 					{/*
 					{props.hasUsers ? (

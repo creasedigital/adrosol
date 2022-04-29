@@ -9,37 +9,39 @@ function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [hasUsers, setHasUsers] = useState(false);
-	const [query, setQuery] = useState("");
-	const [searchData, setSearchData] = useState("");
+	const [isSearching, setIsSearching] = useState(false);
+	// const [query, setQuery] = useState("");
 	// const [searchParam] = useState("users");
 
-	useEffect(() => {
-		axios
-			// .get(`https://jsonplaceholder.typicode.com/${!query ? "users" : query}`)
-			.get(`https://jsonplaceholder.typicode.com/users?userId=1`)
+	const fetchData = async () => {
+		setIsLoaded(true);
+		return axios
+			.get("https://jsonplaceholder.typicode.com/users")
 			.then((res) => {
 				setUsers(res.data);
-				setIsLoaded(true);
-				setHasUsers(true);
 				console.log(res.data);
+				setIsLoaded(false);
+
+				return res.data;
 			})
 			.catch((err) => {
 				setError(err);
-				setIsLoaded(true);
+				setIsLoaded(false);
 			});
-
-		console.log(users);
-	}, [query]);
-
-	const changeSearch = (e) => {
-		const value = e.target.value.toLowerCase();
-		setSearchData(value);
 	};
 
-	const handleSearch = () => {
-		setQuery(searchData);
-		setSearchData("");
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	const handleSearch = async (searchData) => {
+		const res = await fetchData();
+		const filterUser = res.filter(
+			(item) =>
+				item.username.includes(searchData) || item.name.includes(searchData),
+		);
+		console.log(filterUser);
+		setUsers(filterUser);
 	};
 
 	return (
@@ -51,13 +53,9 @@ function App() {
 						element={
 							<Home
 								handleSearch={handleSearch}
-								changeSearch={changeSearch}
-								data={searchData}
 								users={users}
-								hasUsers={hasUsers}
 								error={error}
-								isLoaded={!isLoaded}
-								query={query}
+								isLoaded={isLoaded}
 							/>
 						}
 					/>
