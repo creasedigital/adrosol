@@ -3,12 +3,38 @@ import Header from "../components/Header";
 import Search from "../components/Search";
 import TableContent from "../components/TableContent";
 import Layout from "../layout/Layout";
+// import { Link } from "react-router-dom";
 
 const Home = (props) => {
 	if (props.error) {
-		return <>{props.error.message}</>;
+		return (
+			<Layout>
+				<Box bgColor="red.200" color="red.900" textAlign="center" p={4}>
+					The requested user was not found, please enter a valid username or{" "}
+					<br /> Return to{" "}
+					<a href="/">
+						<Box color="main.900" fontWeight="bold">
+							Home
+						</Box>
+					</a>{" "}
+				</Box>
+			</Layout>
+		);
 	} else if (props.isLoaded) {
-		return <Spinner />;
+		return (
+			<Box>
+				<Layout>
+					<Box>
+						<Search
+							handleSearch={props.handleSearch}
+							changeSearch={props.changeSearch}
+							data={props.data}
+							query={props.query}
+						/>
+					</Box>
+				</Layout>
+			</Box>
+		);
 	} else {
 		return (
 			<Box>

@@ -4,10 +4,12 @@ const SearchResults = (props) => {
 	return (
 		<>
 			{props.users.map((user) => (
-				<Tr>
+				<Tr key={user.id}>
+					<Td>{user.id}</Td>
 					<Td>{user.name}</Td>
 					<Td>{user.username}</Td>
 					<Td>{user.email}</Td>
+					<Td>{user.address.street}</Td>
 					<Td>{user.phone}</Td>
 					<Td>{user.website}</Td>
 					<Td>{user.company.name}</Td>

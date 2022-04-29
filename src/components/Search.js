@@ -9,8 +9,8 @@ const Search = (props) => {
 		<Flex align="center" justify="center">
 			<Flex align="center">
 				<Input
-					placeholder="search a user"
-					width="300px"
+					placeholder="search by username"
+					width={{ base: "200px", sm: "300px", md: "450px" }}
 					mr={4}
 					value={props.data}
 					onChange={(e) => props.changeSearch(e)}

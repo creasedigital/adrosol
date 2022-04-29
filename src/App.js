@@ -16,11 +16,13 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get(`https://jsonplaceholder.typicode.com/${!query ? "users" : query}`)
+			// .get(`https://jsonplaceholder.typicode.com/${!query ? "users" : query}`)
+			.get(`https://jsonplaceholder.typicode.com/users?userId=1`)
 			.then((res) => {
 				setUsers(res.data);
 				setIsLoaded(true);
 				setHasUsers(true);
+				console.log(res.data);
 			})
 			.catch((err) => {
 				setError(err);
@@ -30,13 +32,14 @@ function App() {
 		console.log(users);
 	}, [query]);
 
+	const changeSearch = (e) => {
+		const value = e.target.value.toLowerCase();
+		setSearchData(value);
+	};
+
 	const handleSearch = () => {
 		setQuery(searchData);
 		setSearchData("");
-	};
-
-	const changeSearch = (e) => {
-		setSearchData(e.target.value);
 	};
 
 	return (

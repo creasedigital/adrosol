@@ -14,7 +14,7 @@ const About = () => {
 					color="main.900"
 					borderRadius="10px"
 				>
-					This App was built for the Adroit Solutions Limited.
+					This App was built for Adroit Solutions Limited.
 				</Flex>
 			</Layout>
 		</>
