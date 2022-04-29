@@ -1,4 +1,4 @@
-import { Tbody, Box, Table, TableContainer, Flex } from "@chakra-ui/react";
+import { Tbody, Table, TableContainer, Flex } from "@chakra-ui/react";
 import SearchResults from "./SearchResults";
 import TableData from "./TableData";
 
