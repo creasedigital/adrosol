@@ -4,23 +4,19 @@ import Logo from "../assets/adrosol@2x.png";
 
 const Header = () => {
 	return (
-		<Flex
-			bgColor="main.200"
-			w="100%"
-			alignItems="center"
-			justifyContent="space-between"
-			p={4}
-		>
-			<Flex>
-				<Link to="/">
-					<Image src={Logo} alt="adrosol logo" h="60px" />
+		<Flex bgColor="main.200" p={4} maxWidth="container.2xl">
+			<Flex alignItems="center" justifyContent="space-between" m="auto" w="75%">
+				<Flex>
+					<Link to="/">
+						<Image src={Logo} alt="adrosol logo" h="60px" />
+					</Link>
+				</Flex>
+				<Link to="/about">
+					<Box as="p" fontWeight="bold" pr={4}>
+						About
+					</Box>
 				</Link>
 			</Flex>
-			<Link to="/about">
-				<Box as="p" fontWeight="bold" pr={4}>
-					About
-				</Box>
-			</Link>
 		</Flex>
 	);
 };

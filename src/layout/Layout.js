@@ -1,14 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import Header from "../components/Header";
 
-const layout = (props) => {
+const layout = ({ children }) => {
 	return (
 		<>
-			<Box mb={5}>
+			<Box maxWidth="container.2xl" m="auto" mb={5}>
 				<Header />
 			</Box>
 			<Box maxWidth="container.2xl" m="auto">
-				{props.children}
+				{children}
 			</Box>
 		</>
 	);

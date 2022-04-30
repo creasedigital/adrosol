@@ -3,8 +3,17 @@ import Search from "../components/Search";
 import TableContent from "../components/TableContent";
 import Layout from "../layout/Layout";
 
-const Home = (props) => {
-	if (props.error) {
+const Home = ({
+	setActiveUser,
+	activeUser,
+	isModalOpen,
+	setIsModalOpen,
+	error,
+	isLoaded,
+	handleSearch,
+	users,
+}) => {
+	if (error) {
 		return (
 			<Layout>
 				<Box bgColor="red.200" color="red.900" textAlign="center" p={4}>
@@ -18,12 +27,12 @@ const Home = (props) => {
 				</Box>
 			</Layout>
 		);
-	} else if (props.isLoaded) {
+	} else if (isLoaded) {
 		return (
 			<Box>
 				<Layout>
 					<Box>
-						<Search handleSearch={props.handleSearch} />
+						<Search handleSearch={handleSearch} />
 					</Box>
 					<Flex
 						align="center"
@@ -44,18 +53,16 @@ const Home = (props) => {
 			<Box>
 				<Layout>
 					<Box>
-						<Search handleSearch={props.handleSearch} />
+						<Search handleSearch={handleSearch} />
 					</Box>
-					{/*
-					{props.hasUsers ? (
-
-            <Flex justify="center" mt={4} as="p">
-							Please Use The Search Above or Get Users
-              </Flex>
-              ) : (
-          */}
 					<Box>
-						<TableContent users={props.users} />
+						<TableContent
+							activeUser={activeUser}
+							setActiveUser={setActiveUser}
+							isModalOpen={isModalOpen}
+							setIsModalOpen={setIsModalOpen}
+							users={users}
+						/>
 					</Box>
 				</Layout>
 			</Box>

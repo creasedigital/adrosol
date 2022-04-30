@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Search = (props) => {
+const Search = ({ handleSearch }) => {
 	const [searchData, setSearchData] = useState("");
 
 	return (
@@ -22,8 +22,8 @@ const Search = (props) => {
 					icon={
 						<FontAwesomeIcon
 							icon={faSearch}
-							onClick={() => props.handleSearch(searchData)}
-							// onClick={props.handleSearch}
+							onClick={() => handleSearch(searchData)}
+							// onClick={handleSearch}
 							cursor="pointer"
 							size="xl"
 							color="main.800"

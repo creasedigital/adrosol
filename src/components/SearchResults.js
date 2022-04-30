@@ -1,9 +1,10 @@
 import { Tr, Td } from "@chakra-ui/react";
+import CustomButton from "./CustomButton";
 
-const SearchResults = (props) => {
+const SearchResults = ({ users, setIsModalOpen, setActiveUser }) => {
 	return (
 		<>
-			{props.users.map((user) => (
+			{users.map((user) => (
 				<Tr key={user.id}>
 					<Td>{user.id}</Td>
 					<Td>{user.name}</Td>
@@ -13,6 +14,13 @@ const SearchResults = (props) => {
 					<Td>{user.phone}</Td>
 					<Td>{user.website}</Td>
 					<Td>{user.company.name}</Td>
+					<Td>
+						<CustomButton
+							setIsModalOpen={setIsModalOpen}
+							setActiveUser={setActiveUser}
+							user={user}
+						/>
+					</Td>
 				</Tr>
 			))}
 		</>
