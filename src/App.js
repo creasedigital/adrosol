@@ -13,9 +13,50 @@ function App() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [activeUser, setActiveUser] = useState(null);
 
-	const fetchData = async () => {
-		setIsLoaded(true);
-		return axios
+	// const fetchData = () => {
+	// setIsLoaded(true);
+
+	// try {
+	// 	const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+	// 	// setUsers(res.data);
+	// 	setIsLoaded(false);
+	// 	return res.data;
+	// } catch (err) {
+	// 	setError(err);
+	// 	setIsLoaded(false);
+	// }
+
+	/* return axios
+			.get("https://jsonplaceholder.typicode.com/users")
+			.then((res) => {
+				setUsers(res.data);
+				setIsLoaded(false);
+
+				return res.data;
+				
+				.catch((err) => {
+					setError(err);
+				setIsLoaded(false);
+			});
+		}) */
+	// };
+
+	useEffect(() => {
+		const getData = async () => {
+			setIsLoaded(true);
+			try {
+				const res = await axios.get(
+					"https://jsonplaceholder.typicode.com/users",
+				);
+				setUsers(res.data);
+			} catch (err) {
+				setError(err);
+			}
+			setIsLoaded(false);
+		};
+		getData();
+
+		/* 	axios
 			.get("https://jsonplaceholder.typicode.com/users")
 			.then((res) => {
 				setUsers(res.data);
@@ -23,23 +64,25 @@ function App() {
 
 				return res.data;
 			})
+
 			.catch((err) => {
 				setError(err);
 				setIsLoaded(false);
-			});
-	};
-
-	useEffect(() => {
-		fetchData();
+			}); */
 	}, []);
 
 	const handleSearch = async (searchData) => {
-		const res = await fetchData();
-		const filterUser = res.filter(
-			(item) =>
-				item.username.includes(searchData) || item.name.includes(searchData),
-		);
-		setUsers(filterUser);
+		try {
+			const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+			const filterUser = res.data.filter(
+				(item) =>
+					item.username.toLowerCase().includes(searchData.toLowerCase()) ||
+					item.name.toLowerCase().includes(searchData.toLowerCase()),
+			);
+			setUsers(filterUser);
+		} catch (err) {
+			setError(err);
+		}
 	};
 
 	return (
